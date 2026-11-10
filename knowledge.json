@@ -1,0 +1,48 @@
+{
+  "环境搭建与第一个程序": [
+    "安装 Python 时务必勾选 Add Python to PATH，否则终端里输入 python 会提示“不是内部或外部命令”。",
+    "验证安装：终端执行 python --version 与 pip --version，能输出版本号即成功。",
+    "第一个程序 print('Hello, Python')；注意文件名不要命名成 python.py 或 string.py，会与标准库同名导致 import 出错。"
+  ],
+  "变量与数据类型": [
+    "基本类型：int、float、str、bool、NoneType，用 type(x) 查看类型。",
+    "整数与浮点数混算结果为 float；金额等精确计算用 decimal 模块，不要用 float 直接比较相等。",
+    "字符串不可变，所有“修改”操作（replace、upper、strip）都返回新字符串，必须重新赋值接收。",
+    "f-string 是首选格式化方式：f'{name}今年{age}岁'，支持 {value:.2f} 这样的格式说明。"
+  ],
+  "流程控制": [
+    "if-elif-else 靠缩进划分代码块，冒号不能漏；条件表达式不要用赋值号 =。",
+    "for 遍历序列，while 靠条件退出，注意避免死循环；需要索引时用 enumerate(seq)，同时要值和索引时用 zip(a, b)。",
+    "break 跳出循环、continue 跳过本轮、else 子句在循环正常结束（未被 break）时执行，这是新手最容易忽略的语法。"
+  ],
+  "函数与模块化": [
+    "def 定义函数，参数默认值必须是不可变对象；用可变对象（如 []）当默认值会在多次调用间共享，是经典陷阱。",
+    "位置参数、关键字参数、*args、**kwargs 的顺序固定；返回值用元组可以一次返回多个值。",
+    "一个 .py 文件就是一个模块，import 时执行模块顶层代码，所以测试代码要放进 if __name__ == '__main__': 里。",
+    "pip install 装第三方库，requirements.txt 用 pip freeze > requirements.txt 导出，保证别人环境可复现。"
+  ],
+  "组合数据类型": [
+    "list 可变、tuple 不可变、dict 键值映射、set 去重；list 用 append/extend 区别是加一个元素还是展开追加。",
+    "切片 lst[start:end:step] 不越界、返回新列表；lst[::-1] 反转，但原地反转用 lst.reverse()。",
+    "字典取值用 d.get(k, 默认值) 避免 KeyError；遍历用 for k, v in d.items()。",
+    "推导式 [x*2 for x in lst if x > 0] 比 for 循环更简洁，但超过两层嵌套就该改回普通循环。"
+  ],
+  "文件读写与编码": [
+    "open('a.txt', encoding='utf-8') 一定要显式写编码，Windows 默认 gbk，读 utf-8 文件会 UnicodeDecodeError。",
+    "读 CSV 中文乱码通常是缺 BOM，用 encoding='utf-8-sig'；写文件时 newlines='' 避免多出空行。",
+    "with open(...) as f: 是推荐写法，离开缩进块自动关闭文件，不用手动 close。",
+    "json 模块：json.dump(obj, f, ensure_ascii=False) 才能存中文不变成 \\u 转义。"
+  ],
+  "异常处理与调试": [
+    "try-except 只捕获你预期会处理的异常，不要用裸 except: 吞掉所有错误，会掩盖问题。",
+    "常见异常：ValueError（类型转换失败）、KeyError、IndexError、TypeError、FileNotFoundError、AttributeError。",
+    "else 子句放“没出错时才执行”的代码，finally 放“无论如何都要执行”的清理代码。",
+    "排查靠读 Traceback 的最后一行（真正的错误）和它上面的调用栈；用 print 或 logging 打点，必要时上 pdb 的 breakpoint()。"
+  ],
+  "面向对象入门": [
+    "class 里 __init__ 是构造方法，第一个参数 self 指向实例本身，调用时不用传。",
+    "实例属性挂在 self 上，类属性挂在类上被所有实例共享；可变类属性会被互相影响，是常见坑。",
+    "封装用单下划线 _ 表示“内部使用”， property 装饰器把方法变成只读属性。",
+    "继承用 class Dog(Animal)，子类用 super().__init__() 复用父类构造；Python 支持多继承，方法解析顺序看 __mro__。"
+  ]
+}
