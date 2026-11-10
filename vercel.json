@@ -1,11 +1,12 @@
 {
-  "version": 2,
   "builds": [
     {"src": "api/chat.py", "use": "@vercel/python"},
     {"src": "static/**", "use": "@vercel/static"}
   ],
   "routes": [
-    {"src": "/api/(.*)", "dest": "api/chat.py"},
-    {"src": "/(.*)", "dest": "static/$1"}
+    {"src": "/api/health", "dest": "api/chat.py"},
+    {"src": "/api/chat", "dest": "api/chat.py"},
+    {"src": "/", "dest": "/index.html"},
+    {"src": "/(.*)", "dest": "/static/$1"}
   ]
 }
